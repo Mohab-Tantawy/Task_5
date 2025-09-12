@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+
+import rclpy
+from rclpy.node import Node
+from geometry_msgs.msg import Twist
+from turtlesim_msgs.msg import Pose
+from turtlesim_msgs.srv import Spawn, Kill
+from std_msgs.msg import Int32
+import math
+import random
+
+class TurtleChase(Node):
+    def __init__(self):
+        super().__init__('turtle_chase')
+        
+        #Store enemy positions
+        self.enemy_positions = {}
+        self.player_pose = None
+        self.score = 0
+
+        #Services
+        self.spawn_client = self.create_client(Spawn, 'spawn')
+        self.kill_client = self.create_client(Kill, 'kill')
+
+        while not self.spawn_client.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info('Spawn service not available, waiting...')
+        while not self.kill_client.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info('Kill service not available, waiting...')
+         
+        # Publisher and Subscriber
+        self.score_publisher = self.create_publisher(Int32, 'score', 10)
+        self.player_subscription = self.create_subscription(
+            Pose,
+            'turtle1/pose',
+            self.player_callback,
+            10
+        )
+        #Timer for collision checking
+        self.timer = self.create_timer(0.1, self.check_collisions)
+
+        # Spawn initial enemies
+        self.spawn_inital_enemies()
+
+        self.get_logger().info('Turtle chase node has been started.')
+    
+        
+
