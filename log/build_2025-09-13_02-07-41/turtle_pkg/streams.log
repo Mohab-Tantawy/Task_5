@@ -1,0 +1,21 @@
+[1.103s] Invoking command in '/home/mohab/ros22_ws/src/turtle_pkg': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/mohab/ros22_ws/build/turtle_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/mohab/ros22_ws/install/turtle_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/turtle_pkg build --build-base /home/mohab/ros22_ws/build/turtle_pkg/build install --record /home/mohab/ros22_ws/build/turtle_pkg/install.log --single-version-externally-managed install_data
+[1.367s] running egg_info
+[1.388s] writing ../../build/turtle_pkg/turtle_pkg.egg-info/PKG-INFO
+[1.390s] writing dependency_links to ../../build/turtle_pkg/turtle_pkg.egg-info/dependency_links.txt
+[1.390s] writing entry points to ../../build/turtle_pkg/turtle_pkg.egg-info/entry_points.txt
+[1.390s] writing requirements to ../../build/turtle_pkg/turtle_pkg.egg-info/requires.txt
+[1.390s] writing top-level names to ../../build/turtle_pkg/turtle_pkg.egg-info/top_level.txt
+[1.429s] reading manifest file '../../build/turtle_pkg/turtle_pkg.egg-info/SOURCES.txt'
+[1.430s] writing manifest file '../../build/turtle_pkg/turtle_pkg.egg-info/SOURCES.txt'
+[1.431s] running build
+[1.431s] running build_py
+[1.431s] running install
+[1.439s] running install_lib
+[1.457s] running install_data
+[1.458s] running install_egg_info
+[1.479s] removing '/home/mohab/ros22_ws/install/turtle_pkg/lib/python3.12/site-packages/turtle_pkg-0.0.0-py3.12.egg-info' (and everything under it)
+[1.482s] Copying ../../build/turtle_pkg/turtle_pkg.egg-info to /home/mohab/ros22_ws/install/turtle_pkg/lib/python3.12/site-packages/turtle_pkg-0.0.0-py3.12.egg-info
+[1.482s] running install_scripts
+[1.604s] Installing turtle_chase script to /home/mohab/ros22_ws/install/turtle_pkg/lib/turtle_pkg
+[1.605s] writing list of installed files to '/home/mohab/ros22_ws/build/turtle_pkg/install.log'
+[1.635s] Invoked command in '/home/mohab/ros22_ws/src/turtle_pkg' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/mohab/ros22_ws/build/turtle_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/mohab/ros22_ws/install/turtle_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/turtle_pkg build --build-base /home/mohab/ros22_ws/build/turtle_pkg/build install --record /home/mohab/ros22_ws/build/turtle_pkg/install.log --single-version-externally-managed install_data
