@@ -42,6 +42,39 @@ class TurtleChase(Node):
         self.spawn_inital_enemies()
 
         self.get_logger().info('Turtle chase node has been started.')
-    
-        
+    def player_callback(self, msg):
+        self.player_pose = msg
+    def enemy_callback(self, msg, enemy_name):
+        self.enemy_positions[enemy_name] = msg
+    def spawn_inital_enemies(self):
+        for i in range(1, 4): 
+            enemy_name = f'enemy{i}'
+            self.spawn_enemy(enemy_name)
+    def spawn_enemy(self, enemy_name):
+        #Random position and orientation
+        x = random.uniform(1.0, 10.0)
+        y = random.uniform(1.0, 10.0)
+        theta = random.uniform(0, 2 * math.pi)
 
+        request = Spawn.Request()
+        request.x = x
+        request.y = y
+        request.theta = theta
+        request.name = enemy_name
+
+        future = self.spawn_client.call_async(request)
+        future.add_done_callback(lambda future: self.spawn_callback(future, enemy_name))
+    def spawn_callback(self, future, name , x , y):
+        try: 
+            response = future.result()
+            if response.name:
+                self.create_subscription(
+                    Pose,
+                    f'{name}/pose',
+                    lambda msg, n=name: self.enemy_callback(msg, n),
+                    10
+                )
+                self.get_logger().info(f'Spawned {response.name} at ({x:.1f}, {y:.1f})')
+        except Exception as e:
+            self.get_logger().error(f'Spawn service call failed: {e}')
+            
