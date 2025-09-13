@@ -13,7 +13,7 @@ def generate_launch_description():
             output='screen'
         ),
         
-        # Start turtle chase game node
+        # Start turtle_chase_node
         Node(
             package='turtle_pkg',
             executable='turtle_chase',
@@ -21,7 +21,7 @@ def generate_launch_description():
             output='screen'
         ),
         
-        # Start teleop key node (in a new terminal)
+        # Start teleop key node (NEW TERMINAL)
         Node(
             package='turtlesim',
             executable='turtle_teleop_key',
